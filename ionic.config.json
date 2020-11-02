@@ -1,0 +1,7 @@
+{
+  "name": "MikeNews",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
