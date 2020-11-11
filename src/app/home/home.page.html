@@ -1,20 +1,23 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header name="Latest News"></app-header>
+<div class="slider-container">
+  <ion-content>
+
+  </ion-content>
+</div>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div id="container-card">
+    <ion-card *ngFor="let news of newsArray" mode="ios" [style.display]="news.urlToImage ? 'inherit' : 'none'">
+      <img [ngStyle]="{'display' : news.urlToImage? 'initial' : 'none'}" [src]="news.urlToImage"
+        (load)="imageload(news)">
+      <img [ngStyle]="{'display' : news.urlToImage ? 'none' : 'initial'}" [src]="default">
+      <ion-card-header>
+        <ion-card-subtitle>{{news.publishedAt | date:' dd MMM, yyyy'}}</ion-card-subtitle>
+        <!-- <ion-card-title></ion-card-title> -->
+      </ion-card-header>
+      <ion-card-content color="light" class="new-content" (click)="getNewsDeatils(news)">
+        <p>{{news.title}}</p>
+      </ion-card-content>
+    </ion-card>
   </div>
 </ion-content>

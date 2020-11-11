@@ -1,0 +1,15 @@
+<app-header name="Science"></app-header>
+<ion-content [fullscreen]="true">
+  <div id="container-card">
+    <ion-card *ngFor="let news of newsArray" mode="ios" [style.display]="news.urlToImage ? 'inherit' : 'none'">
+      <img [ngStyle]="{'display' : news.urlToImage? 'initial' : 'none'}" [src]="news.urlToImage">
+      <ion-card-header>
+        <ion-card-subtitle>{{news.publishedAt | date:' dd MMM, yyyy'}}</ion-card-subtitle>
+        <!-- <ion-card-title></ion-card-title> -->
+      </ion-card-header>
+      <ion-card-content color="light" class="new-content" (click)="getDetails(news)">
+        <p>{{news.title}}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

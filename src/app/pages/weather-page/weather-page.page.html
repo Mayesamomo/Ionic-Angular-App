@@ -1,0 +1,52 @@
+<app-header name="Tech News"></app-header>
+<ion-content [fullscreen]="true">
+  <!-- when a city is entered the city is parsed to the filed  -->
+  <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="getCity(searchTerm)"></ion-searchbar>
+
+  <ion-card>
+    <ion-card-header>
+      <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle> -->
+      <!-- get the current city and country code on load -->
+      <ion-card-title>Current Weather and forecast in {{weather.name}}, {{weather.sys.country}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <table>
+        <div class="weather-temp">
+          <span class="temp">
+            <img src="assets/{{weather.weather[0].icon}}.png" alt="01d.png">{{weather.main.temp | number: '1.0.0'}}
+            &#176;F
+          </span>
+          <p class="weather-text">{{weather.weather[0].description}}</p>
+        </div>
+        <tbody>
+          <!-- retrieves humidity -->
+          <tr>
+            <td>Humidy</td>
+            <td>{{weather.main.humidity}}</td>
+          </tr>
+          <tr>
+            <!-- retrieves pressure -->
+            <td>Pressure</td>
+            <td>{{weather.main.pressure}}</td>
+          </tr>
+          <tr>
+            <!-- sunrise  -->
+            <td>Sunrise</td>
+            <td>{{weather.sys.sunrise *1000 |date:'H:m' }}</td>
+          </tr>
+          <tr>
+            <!-- sunset -->
+            <td>Sunset</td>
+            <td>{{weather.sys.sunset *1000 |date:'H:m' }}</td>
+          </tr>
+          <tr>
+            <!-- gets coordinates -->
+            <td>Geo Coordinate</td>
+            <td>{{weather.coord.lat}},{{" "}}, {{weather.coord.lon}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

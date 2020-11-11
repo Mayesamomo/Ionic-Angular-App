@@ -1,0 +1,31 @@
+<ion-content>
+  <ion-fab vertical="top" horizontal="start" slot="fixed">
+    <ion-fab-button size="small" color="dark" (click)="back()" routerDirection="backward">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+  <!-- <ion-buttons slot="start">
+    <ion-back-button (click)="back()" routerDirection="backward" color="dark" translucent="true"></ion-back-button>
+  </ion-buttons> -->
+
+
+  <div class="newsBox" [ngStyle]="{'background-image':'url(' + image + ')'}">
+    <div class="movie-card__overlay"></div>
+    <div class="movie-card__share"></div>
+    <div class="backdrop">
+      <div class="newsContainer">
+        <div class="newsTitle">
+          {{headLine}}
+        </div>
+        <div class="newsDesc">
+          {{description}}
+        </div>
+        <div (click)="open()" class="continueButton">
+          continue reading
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
